@@ -31,8 +31,8 @@ for i in img_list:
     i.thumbnail(button_size)
 
 # make images Tkinter-compatible
-for i in img_list:
-    i=ImageTk.PhotoImage(i)
+for i in range(len(img_list)):
+    img_list[i]=ImageTk.PhotoImage(img_list[i])
 
 # create buttons with images in them
 button_list=[]
@@ -40,13 +40,8 @@ for i in img_list:
     x=Button(image=i, height=100, width=100)
     button_list.append(x)
 
-
-
-
 # put buttons on grid
 for i in range(len(button_list)):
-    button_list[i].grid(row=i/4, column=i%4)
-
-
+    button_list[i].grid(row=int(i/4), column=i%4)
 
 root.mainloop()
