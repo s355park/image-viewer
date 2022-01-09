@@ -2,7 +2,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 
 root=Tk()
-root.geometry("420x450")
+root.geometry("400x400")
 
 small_button_size=(100, 100)
 
@@ -34,9 +34,9 @@ def zoom_in(img_index):
     for i in range(len(button_list)):
         button_list[i].grid_forget()
     zoomed_in_img=original_img_list[img_index]
-    zoomed_in_img.thumbnail((600,600))
+    zoomed_in_img.thumbnail((400,400))
     zoomed_in_img=ImageTk.PhotoImage(zoomed_in_img)
-    zoomed_in_label=Label(root, image=zoomed_in_img)
+    zoomed_in_label=Label(root, height=400, width=400, image=zoomed_in_img)
     zoomed_in_label.grid(row=0, column=0)
     zoomed_in_label.zoomed_in_img=zoomed_in_img
 
@@ -54,7 +54,7 @@ for i in range(len(zoomed_out_img_list)):
 # create buttons with images in them
 button_list=[]
 for i in range(len(zoomed_out_img_list)):
-    button_list.append(Button(root, image=zoomed_out_img_list[i], height=100, width=100, command=lambda i=i:zoom_in(i)))
+    button_list.append(Button(root, image=zoomed_out_img_list[i], height=100, width=100, padx=0, pady=0, command=lambda i=i:zoom_in(i)))
 
 # put buttons on grid
 for i in range(len(button_list)):
